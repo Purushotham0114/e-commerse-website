@@ -1,120 +1,445 @@
-constroutes:Routes= [
-{path:&#39;s&#39;,component:StudentComponent},
-{path:&#39;f&#39;,component:FacultyComponent}
+ng new EX-4
+cd EX-4
+Step 2: Generate standalone components
+ng generate component home --standalone
+ng generate component destinations --standalone
+ng generate component bookings –standalone
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+Step 3: Set up routing
+Edit app.routes.ts with your routes
+
+import { Routes } from '@angular/router';
+import { Home } from './home/home';
+import { Destinations } from './destinations/destinations';
+import { Bookings } from './bookings/bookings';
+export const routes: Routes = [
+{ path: '', component: Home },
+{ path: 'destinations', component: Destinations },
+
+{ path: 'bookings', component: Bookings }
 ];
-
-@NgModule({
-declarations: [
-AppComponent,
-
-myroutes
-],
-
-&lt;router-outlet&gt;&lt;/router-outlet&gt;
-
-&lt;nav&gt;
-&lt;arouterLink=&quot;/f&quot;style=&quot;padding:10px;&quot;&gt;FACULTY&lt;/a&gt;
-&lt;arouterLink=&quot;/s&quot;style=&quot;padding:10px;&quot;&gt;STUDENT&lt;/a&gt;
-&lt;/nav&gt;
-
-GPREC,VIISEMCS
-E
-
-ANGULARL
-AB
-
-1
-P
-A
-G
-E
-1
-
-a single page application (SPA) does not have different pages to link to.
-Instead,
-ithasdifferentviewstodisplaytotheuser.Toallowausertonavigateandchange
-the view, you will want to use the RouterLink directive instead of href:
-Step 5:app.component.css
-
-Step6:Now,infaculty.component.htmllet’swriteasimplehtmlcodeforfaculty
-login page.similarly, in student.component.html
-faculty.component.html
-h1{
-text-align:center;
-color: #ce2b2b;
+Edit app.ts
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+@Component({
+selector: 'app-root',
+imports: [RouterOutlet],
+templateUrl: './app.html',
+styleUrl: './app.css'
+})
+export class App {
+protected title = 'EXP-4’;
 }
-nav a{
-padding: 15px 20px;
-text-decoration: none;
-margin-top: 10px;
-display: inline-block;
-background-color:aqua;
-border-radius: 4px;
-margin-left: 20px;
+Edit app.html
+<router-outlet></router-outlet>
+Step 4: Design each component (HTML + CSS + TS logic)
+Home.html
+<div class="background"></div>
+<div class="home-container">
+<h2> Pack Your Bags - Let's Explore! </h2>
+<button (click)="goToDestinations()">Destination </button>
+<button (click)="goToBookings()">Booking</button>
+</div>
+
+Home.ts
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+@Component({
+selector: 'app-home',
+standalone: true,
+imports: [],
+templateUrl: './home.html',
+styleUrl: './home.css'
+})
+export class Home {
+constructor(private router: Router) {}
+goToDestinations() {
+this.router.navigate(['/destinations']);
 }
-nava:visited,a:link{
-color: #3643b6;
+goToBookings() {
+this.router.navigate(['/bookings']);
 }
-nava:hover{
-color: #fff;
-background-color: #3643b6;
-}
-nav a.active {
-color:#ce2b2b;
-background-color:#49ce0c;
 }
 
-html&gt;
-&lt;body&gt;
-&lt;h1&gt;FacultyLogin Form&lt;/h1&gt;
-&lt;form&gt;
-&lt;divclass=&quot;container&quot;&gt;
-&lt;label&gt;Username:&lt;/label&gt;
-&lt;inputtype=&quot;text&quot;placeholder=&quot;EnterUsername&quot;name=&quot;username&quot;required&gt;
-&lt;label&gt;Password:&lt;/label&gt;
-&lt;inputtype=&quot;password&quot;placeholder=&quot;EnterPassword&quot;name=&quot;password&quot;required&gt;
-&lt;buttontype=&quot;submit&quot;&gt;Login&lt;/button&gt;
-&lt;inputtype=&quot;checkbox&quot;checked=&quot;checked&quot;&gt;Rememberme
+Edit home.css
 
-GPREC,VIISEMCS
-E
+.background {
+background-image: url('/assets/tour1.png');
+background-size: auto;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+opacity: 0.2;
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+z-index: 0;
+}
+.home-container {
+position: relative;
+z-index: 1;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+text-align: center;
+}
+h2 {
+font-size: 2.5rem;
+color: red;
+text-shadow: 1px 1px 2px white;
+}
 
-ANGULARL
-AB
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
 
-1
-P
-A
-G
-E
-1
+Mrs. D.L.N. Prasunna
 
-&lt;buttontype=&quot;button&quot;class=&quot;cancelbtn&quot;&gt;Cancel&lt;/button&gt;Forgot
-&lt;ahref=&quot;#&quot;&gt;password? &lt;/a&gt;
-&lt;/div&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-Step 7: student.component.html
+button {
+padding: 10px 25px;
+font-size: 1rem;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+color: white;
+transition: background-color 0.3s ease;
+}
+button:nth-of-type(1) {
+background-color: #28a745; /* Green - Home */
+}
+button:nth-of-type(1):hover {
+background-color: #218838;
+}
+button:nth-of-type(2) {
+background-color: #17a2b8; /* Teal - Destination */
+}
+button:nth-of-type(2):hover {
+background-color: #117a8b;
+}
+button:nth-of-type(3) {
+background-color: #ffc107; /* Yellow - Booking */
+color: black;
+}
+button:nth-of-type(3):hover {
+background-color: #e0a800;
+}
+body, html {
+margin: 0;
+padding: 0;
+height: 100%;
+}
 
-&lt;html&gt;
-&lt;body&gt;
-&lt;tablealign=&quot;right&quot;&gt;
-&lt;tr&gt;&lt;td&gt;
-&lt;h1&gt;StudentLogin Form&lt;/h1&gt;
-&lt;form&gt;
-&lt;divclass=&quot;container&quot;&gt;
-&lt;label&gt;Username:&lt;/label&gt;
-&lt;inputtype=&quot;text&quot;placeholder=&quot;EnterUsername&quot;name=&quot;username&quot;required&gt;&lt;br&gt;
-&lt;label&gt;Password:&lt;/label&gt;
+Destinations.ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+@Component({
+selector: 'app-destinations',
+standalone: true,
+imports: [CommonModule],
+templateUrl: './destinations.html',
+styleUrls: ['./destinations.css']
+})
+export class Destinations {
+selected: string = '';
+destinations: { [key: string]: string[] } = {
 
-&lt;inputtype=&quot;password&quot;placeholder=&quot;Enter
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
 
-Password&quot;name=&quot;password&quot;required&gt;&lt;br&gt;
+Mrs. D.L.N. Prasunna
 
-&lt;buttontype=&quot;submit&quot;&gt;Login&lt;/button&gt;
-&lt;inputtype=&quot;checkbox&quot;checked=&quot;checked&quot;&gt;Rememberme
-&lt;buttontype=&quot;button&quot;class=&quot;cancelbtn&quot;&gt;Cancel&lt;/button&gt;Forgot
-&lt;ahref=&quot;#&quot;&gt;password? &lt;/a&gt;
-&lt;/div&gt;
-&lt;/form&gt;
+Paris: ['Eiffel Tower', 'Louvre Museum', 'Notre-Dame Cathedral'],
+Tokyo: ['Tokyo Tower', 'Shinjuku Gyoen', 'Asakusa Temple'],
+'New York': ['Statue of Liberty', 'Central Park', 'Times Square'],
+Dubai: ['Burj Khalifa', 'Palm Jumeirah', 'Dubai Mall']
+};
+selectDestination(destination: string) {
+this.selected = destination;
+}
+}
+
+Destinations.html
+<div class="background"></div>
+<h2>Top Travel Destinations</h2>
+<div class="button-list">
+<button (click)="selectDestination('Paris')"> Paris</button>
+<button (click)="selectDestination('Tokyo')"> Tokyo</button>
+<button (click)="selectDestination('New York')"> New York</button>
+<button (click)="selectDestination('Dubai')"> Dubai</button>
+</div>
+<div class="image-container" *ngIf="selected">
+<img [src]="'assets/' + selected.toLowerCase().replace(' ', '') + '.png'"
+[alt]="selected + ' image'" />
+<ul>
+<li *ngFor="let place of destinations[selected]">
+{{ place }}
+</li>
+</ul>
+</div>
+
+Destinations.css
+
+.background {
+background-image: url('/assets/dest.png');
+background-size: auto;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+z-index: 0;
+opacity: 0.15;
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+}
+h2 {
+color: #d32f2f;
+text-align: center;
+margin-top: 40px;
+font-size: 2.5rem;
+text-shadow: 1px 1px 2px #ccc;
+z-index: 1;
+position: relative;
+}
+.button-list {
+display: flex;
+justify-content: center;
+gap: 15px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+z-index: 1;
+position: relative;
+}
+.button-list button {
+padding: 10px 20px;
+border: none;
+background-color: #4d62b6;
+color: white;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.3s;
+font-size: 1rem;
+box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+.button-list button:hover {
+background-color: #00796b;
+}
+.image-container {
+text-align: center;
+margin-top: 20px;
+z-index: 1;
+position: relative;
+}
+.image-container img {
+width: 300px;
+height: auto;
+border-radius: 10px;
+margin-bottom: 15px;
+}
+.image-container ul {
+list-style: none;
+padding: 0;
+margin-top: 15px;
+}
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+.image-container li {
+background-color: #e0f2f1;
+margin: 5px auto;
+padding: 10px;
+max-width: 300px;
+border-radius: 5px;
+font-size: 1.1rem;
+box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+Bookings.ts
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+@Component({
+selector: 'app-bookings',
+standalone: true,
+imports: [CommonModule, FormsModule],
+templateUrl: './bookings.html',
+styleUrls: ['./bookings.css']
+})
+export class Bookings {
+name: string = '';
+persons: number | null = null;
+destination: string = '';
+bookingConfirmed = false;
+submitBooking() {
+if (this.name && this.persons && this.destination) {
+this.bookingConfirmed = true;
+}
+}
+}
+Bookings.html
+<div class="background"></div>
+<div class="booking-container">
+<h2>Book Your Trip</h2>
+<form (ngSubmit)="submitBooking()" #bookingForm="ngForm">
+<div class="form-row">
+<label for="name">Name:</label>
+<input id="name" name="name" type="text" [(ngModel)]="name" required />
+</div>
+<div class="form-row">
+<label for="persons">No. of Persons:</label>
+<input id="persons" name="persons" type="number" [(ngModel)]="persons"
+required />
+</div>
+<div class="form-row">
+<label for="destination">Choose Destination:</label>
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+<select id="destination" name="destination" [(ngModel)]="destination" required>
+<option value="Paris">Paris</option>
+<option value="Tokyo">Tokyo</option>
+<option value="New York">New York</option>
+<option value="Dubai">Dubai</option>
+</select>
+</div>
+<button type="submit">Submit</button>
+</form>
+<div *ngIf="bookingConfirmed" class="confirmation">
+<p>Thank you, <strong>{{ name }}</strong>!</p>
+<p>Your trip to <strong>{{ destination }}</strong> has been booked for
+<strong>{{ persons }}</strong> person(s).</p>
+</div>
+</div>
+Bookings.css
+.background {
+background-image: url('/assets/book.png');
+background-size: auto;
+background-position: center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+z-index: 0;
+opacity: 0.3;
+}
+body, html {
+margin: 0;
+padding: 0;
+height: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #f0fff1;
+font-family: Arial, sans-serif;
+}
+.booking-container {
+text-align: center;
+z-index: 1;
+position: relative;
+}
+form {
+display: flex;
+flex-direction: column;
+align-items: center;
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+gap: 20px;
+padding: 30px 40px;
+border-radius: 5px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.form-row {
+display: flex;
+align-items: center;
+gap: 10px;
+width: 50%;
+justify-content: center;
+}
+label {
+width: 150px;
+text-align: right;
+font-weight: bold;
+}
+input, select {
+padding: 8px;
+font-size: 1rem;
+border: 1px solid #ccc;
+border-radius: 6px;
+width: 150px;
+}
+select:focus {
+outline: none;
+border-color: teal;
+box-shadow: 0 0 5px rgba(0, 128, 128, 0.5);
+}
+button {
+padding: 10px 25px;
+font-size: 1rem;
+background-color: teal;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+}
+button:hover {
+background-color: darkcyan;
+}
+h2 {
+color: red;
+}
+.confirmation {
+margin-top: 20px;
+background-color: #e0f7fa;
+padding: 20px;
+border-radius: 10px;
+
+ANGULAR LAB IV B. TECH VII SEM CSE A.Y.:2025-26
+
+Mrs. D.L.N. Prasunna
+
+max-width: 400px;
+margin-left: auto;
+margin-right: auto;
+font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+.form-row {
+flex-direction: column;
+align-items: flex-start;
+}
+label {
+width: 100%;
+text-align: left;
+}
+input, select {
+width: 100%;
+}
+form {
+padding: 20px;
+}
+}
