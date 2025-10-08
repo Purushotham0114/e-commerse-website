@@ -1,0 +1,62 @@
+import{HttpClient}from&#39;@angular/common/http&#39;; import
+{ Injectable } from &#39;@angular/core&#39;;
+import{Observable}from&#39;rxjs&#39;;
+@Injectable({
+providedIn:&#39;root&#39;
+})
+exportclassFetchDataService{
+constructor(privatehttp:HttpClient){}
+getUser(): Observable&lt;any&gt;{
+returnthis.http.get(&quot;https://jsonplaceholder.typicode.com/users&quot;);
+}
+}
+
+GPREC,VIISEMCS
+E
+
+ANGULARL
+AB
+
+2
+P
+A
+G
+E
+1
+
+method,passinganobserver.ThisisaJavaScriptobjectthatdefinesthehandlersforthenotifications you
+receive.
+
+Step-4:
+app.component.html
+
+import {Component}from &#39;@angular/core&#39;;
+import{FetchDataService}from&#39;./fetch-data.service&#39;;
+@Component({
+selector:&#39;app-root&#39;,
+templateUrl:&#39;./app.component.html&#39;,
+styleUrls: [&#39;./app.component.css&#39;]
+})
+exportclassAppComponent{
+title = &#39;Demo&#39;;
+userList:any[]=[];
+constructor(privatefetchService:FetchDataService){}
+ngOnInit(): void{
+this.fetchService.getUser().subscribe(user=&gt;this.userList=user);
+}
+}
+
+&lt;tablestyle=&quot;margin:0auto;border: 1pxblack solid;&quot;&gt;
+&lt;thead&gt;
+&lt;thstyle=&quot;border:1pxblacksolid;padding:15px;&quot;&gt;Name&lt;/th&gt;
+&lt;thstyle=&quot;border:1pxblacksolid;padding:15px;&quot;&gt;Id&lt;/th&gt;
+&lt;thstyle=&quot;border:1pxblacksolid;padding:15px;&quot;&gt;Email&lt;/th&gt;
+&lt;thstyle=&quot;border:1pxblacksolid;padding:15px;&quot;&gt;Street&lt;/th&gt;
+&lt;/thead&gt;
+&lt;tr*ngFor=&quot;letuserof userList&quot;&gt;
+&lt;tdstyle=&quot;border:1pxblacksolid;padding: 15px;&quot;&gt;{{user.name}}&lt;/td&gt;
+&lt;tdstyle=&quot;border:1pxblacksolid;padding: 15px;&quot;&gt;{{user.id}}&lt;/td&gt;
+&lt;tdstyle=&quot;border:1pxblacksolid;padding: 15px;&quot;&gt;{{user.email}}&lt;/td&gt;
+&lt;tdstyle=&quot;border:1pxblacksolid;padding: 25px;&quot;&gt;{{user.address.street}}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
