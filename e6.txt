@@ -1,0 +1,74 @@
+&lt;divclass=&quot;container&quot;&gt;
+&lt;div&gt;&lt;imgsrc=&quot;assets/angular.jpg&quot;alt=&quot;Angular&quot;style=&quot;width:240px;height:180px;&quot;&gt;&lt;/div&gt;
+&lt;divstyle=&quot;text-align:left;padding:2px50px;&quot;&gt;
+&lt;h3&gt;{{title}}Course&lt;/h3&gt;
+&lt;/div&gt;
+&lt;divstyle=&quot;text-align:left;padding:2px80px;&quot;&gt;
+&lt;button(click)=&quot;OnEnroll()&quot;style=&quot;background-color:blue&quot;&gt;Enroll&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+import { Component } from&#39;@angular/core&#39;;
+import{EnrollService} from&#39;../Services/enroll.service&#39;;
+@Component({
+selector:&#39;app-angular&#39;,
+templateUrl:&#39;./angular.component.html&#39;,
+styleUrls: [&#39;./angular.component.css&#39;],
+providers:[EnrollService]
+})
+exportclassAngularComponent{
+title= &quot;Angular&quot;
+constructor(privateenrollService:EnrollService)
+{
+}
+
+GPREC,VIISEMCS
+E
+
+ANGULARL
+AB
+
+2
+P
+A
+G
+E
+1
+
+OnEnroll()
+{
+this.enrollService.OnEnrollClicked(this.title);
+}
+
+}
+
+Step4:Gotosrc/app/javascript/javascript.component.html
+
+Step5: Gotosrc/app/javascript/javascript.component.ts
+
+&lt;divclass=&quot;container&quot;&gt;
+&lt;div&gt;&lt;imgsrc=&quot;assets/javascript1.jpg&quot;style=&quot;width:240px;height:180px;&quot;&gt;&lt;/div&gt;
+&lt;divstyle=&quot;text-align:left;padding:2px50px;&quot;&gt;
+&lt;h3&gt;{{title}}Course&lt;/h3&gt;
+&lt;/div&gt;
+&lt;divstyle=&quot;text-align:left;padding:2px80px;&quot;&gt;
+&lt;button(click)=&quot;OnEnroll()&quot;style=&quot;background-color:yellow&quot;&gt;Enroll&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt; import { Component } from&#39;@angular/core&#39;;
+import{EnrollService}from&#39;../Services/enroll.service&#39;;
+@Component({
+selector:&#39;app-javascript&#39;,
+templateUrl:&#39;./javascript.component.html&#39;
+, styleUrls: [&#39;./javascript.component.css&#39;],
+providers:[EnrollService]
+})
+exportclassJavascriptComponent{
+title= &quot;JavaScript&quot;;
+constructor(privateenrollService:EnrollService)
+{
+}
+OnEnroll()
+{
+this.enrollService.OnEnrollClicked(this.title);
+}
+}

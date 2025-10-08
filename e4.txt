@@ -1,0 +1,120 @@
+constroutes:Routes= [
+{path:&#39;s&#39;,component:StudentComponent},
+{path:&#39;f&#39;,component:FacultyComponent}
+];
+
+@NgModule({
+declarations: [
+AppComponent,
+
+myroutes
+],
+
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+&lt;nav&gt;
+&lt;arouterLink=&quot;/f&quot;style=&quot;padding:10px;&quot;&gt;FACULTY&lt;/a&gt;
+&lt;arouterLink=&quot;/s&quot;style=&quot;padding:10px;&quot;&gt;STUDENT&lt;/a&gt;
+&lt;/nav&gt;
+
+GPREC,VIISEMCS
+E
+
+ANGULARL
+AB
+
+1
+P
+A
+G
+E
+1
+
+a single page application (SPA) does not have different pages to link to.
+Instead,
+ithasdifferentviewstodisplaytotheuser.Toallowausertonavigateandchange
+the view, you will want to use the RouterLink directive instead of href:
+Step 5:app.component.css
+
+Step6:Now,infaculty.component.htmllet’swriteasimplehtmlcodeforfaculty
+login page.similarly, in student.component.html
+faculty.component.html
+h1{
+text-align:center;
+color: #ce2b2b;
+}
+nav a{
+padding: 15px 20px;
+text-decoration: none;
+margin-top: 10px;
+display: inline-block;
+background-color:aqua;
+border-radius: 4px;
+margin-left: 20px;
+}
+nava:visited,a:link{
+color: #3643b6;
+}
+nava:hover{
+color: #fff;
+background-color: #3643b6;
+}
+nav a.active {
+color:#ce2b2b;
+background-color:#49ce0c;
+}
+
+html&gt;
+&lt;body&gt;
+&lt;h1&gt;FacultyLogin Form&lt;/h1&gt;
+&lt;form&gt;
+&lt;divclass=&quot;container&quot;&gt;
+&lt;label&gt;Username:&lt;/label&gt;
+&lt;inputtype=&quot;text&quot;placeholder=&quot;EnterUsername&quot;name=&quot;username&quot;required&gt;
+&lt;label&gt;Password:&lt;/label&gt;
+&lt;inputtype=&quot;password&quot;placeholder=&quot;EnterPassword&quot;name=&quot;password&quot;required&gt;
+&lt;buttontype=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;inputtype=&quot;checkbox&quot;checked=&quot;checked&quot;&gt;Rememberme
+
+GPREC,VIISEMCS
+E
+
+ANGULARL
+AB
+
+1
+P
+A
+G
+E
+1
+
+&lt;buttontype=&quot;button&quot;class=&quot;cancelbtn&quot;&gt;Cancel&lt;/button&gt;Forgot
+&lt;ahref=&quot;#&quot;&gt;password? &lt;/a&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+Step 7: student.component.html
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;tablealign=&quot;right&quot;&gt;
+&lt;tr&gt;&lt;td&gt;
+&lt;h1&gt;StudentLogin Form&lt;/h1&gt;
+&lt;form&gt;
+&lt;divclass=&quot;container&quot;&gt;
+&lt;label&gt;Username:&lt;/label&gt;
+&lt;inputtype=&quot;text&quot;placeholder=&quot;EnterUsername&quot;name=&quot;username&quot;required&gt;&lt;br&gt;
+&lt;label&gt;Password:&lt;/label&gt;
+
+&lt;inputtype=&quot;password&quot;placeholder=&quot;Enter
+
+Password&quot;name=&quot;password&quot;required&gt;&lt;br&gt;
+
+&lt;buttontype=&quot;submit&quot;&gt;Login&lt;/button&gt;
+&lt;inputtype=&quot;checkbox&quot;checked=&quot;checked&quot;&gt;Rememberme
+&lt;buttontype=&quot;button&quot;class=&quot;cancelbtn&quot;&gt;Cancel&lt;/button&gt;Forgot
+&lt;ahref=&quot;#&quot;&gt;password? &lt;/a&gt;
+&lt;/div&gt;
+&lt;/form&gt;
